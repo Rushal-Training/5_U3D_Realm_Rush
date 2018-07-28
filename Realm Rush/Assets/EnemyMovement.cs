@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemyMovement : MonoBehaviour
 {
+	[SerializeField] float moveSpeed = 10f;
 
 	void Start ()
 	{
@@ -13,12 +15,20 @@ public class EnemyMovement : MonoBehaviour
 		StartCoroutine ( FollowPath ( path ) );
 	}
 
-	IEnumerator FollowPath ( List<Waypoint> waypoints)
+	IEnumerator FollowPath ( List<Waypoint> waypoints )
 	{
 		foreach ( Waypoint waypoint in waypoints )
 		{
-			transform.position = waypoint.transform.position;
-			yield return new WaitForSecondsRealtime ( 1f );
+			// Ease to point
+			while ( transform.position != waypoint.transform.position )
+			{
+				transform.position = Vector3.MoveTowards(transform.position, waypoint.transform.position, moveSpeed * Time.deltaTime);
+				yield return null;
+			}
+
+			// Hop to point
+			//transform.position = waypoint.transform.position;
+			//yield return new WaitForSecondsRealtime ( 1f );
 		}
 	}
 }

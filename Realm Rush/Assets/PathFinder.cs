@@ -43,7 +43,6 @@ public class PathFinder : MonoBehaviour
 		while ( queue.Count > 0 && isRunning )
 		{
 			searchCenter = queue.Dequeue ();
-			//print ( "Searching from " + searchCenter );
 			searchCenter.isExplored = true;
 			HaltIfEndFound ();
 			ExploreNeighbors ();
@@ -114,6 +113,5 @@ public class PathFinder : MonoBehaviour
 				grid.Add ( gridPos, waypoint );
 			}
 		}
-		//Debug.Log ( "Loaded " + grid.Count + " blocks" );
 	}
 }
