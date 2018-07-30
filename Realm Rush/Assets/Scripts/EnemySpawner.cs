@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-	[SerializeField] float secondsBetweenSpawns = 5f;
-	[SerializeField] EnemyMovement enemyPrefab;
+	[Range(0.1f, 120f)][SerializeField] float secondsBetweenSpawns = 5f;
+	[SerializeField] Enemy enemyPrefab;
 
 	void Start ()
 	{

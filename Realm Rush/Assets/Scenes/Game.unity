@@ -1253,8 +1253,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0.6970779, y: 0.00022231878, z: -0.00021557041, w: 0.7169954}
-  m_LocalPosition: {x: 18.896654, y: 42.11107, z: 10.271635}
+  m_LocalRotation: {x: -0.38878942, y: 0.003861392, z: -0.0016294876, w: -0.92131716}
+  m_LocalPosition: {x: 18.359348, y: 70.497055, z: -39.164734}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2413,7 +2413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsBetweenSpawns: 5
-  enemyPrefab: {fileID: 114623690370487294, guid: 626350d2560bda24f81235d47251592a,
+  enemyPrefab: {fileID: 114120867638171770, guid: 626350d2560bda24f81235d47251592a,
     type: 2}
 --- !u!4 &1855608072 stripped
 Transform:
