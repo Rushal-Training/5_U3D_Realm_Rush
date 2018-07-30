@@ -403,6 +403,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  goalParticlePrefab: {fileID: 198295756163988584, guid: 899554fd3c2a51348878f9472179feca,
+    type: 2}
 --- !u!114 &114941686308246830
 MonoBehaviour:
   m_ObjectHideFlags: 1

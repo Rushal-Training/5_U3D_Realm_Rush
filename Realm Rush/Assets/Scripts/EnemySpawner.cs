@@ -11,17 +11,13 @@ public class EnemySpawner : MonoBehaviour
 	{
 		StartCoroutine ( SpawnEnemies () );
 	}
-	
-	void Update ()
-	{
-		
-	}
 
 	IEnumerator SpawnEnemies ()
 	{
 		while ( true )
 		{
-			Instantiate ( enemyPrefab, transform.position, Quaternion.identity );
+			Enemy enemy = Instantiate ( enemyPrefab, transform.position, Quaternion.identity );
+			enemy.transform.parent = transform;
 			yield return new WaitForSecondsRealtime ( secondsBetweenSpawns );
 		}
 	}

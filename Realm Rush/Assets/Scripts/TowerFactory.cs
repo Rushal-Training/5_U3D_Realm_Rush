@@ -25,19 +25,24 @@ public class TowerFactory : MonoBehaviour
 	private void InstantiateTower ( Waypoint waypoint )
 	{
 		Tower tower = Instantiate ( towerPrefab, waypoint.transform.position, Quaternion.identity );
-		waypoint.isPlaceable = false;
+		tower.transform.parent = transform.Find ( "Towers" );
 
+		waypoint.isPlaceable = false;
 		tower.waypoint = waypoint;
+
 		towers.Enqueue ( tower );
 	}
 
 	private void MoveExistingTower ( Waypoint waypoint )
 	{
 		Tower tower = towers.Dequeue ();
+
 		tower.waypoint.isPlaceable = true;
 		waypoint.isPlaceable = false;
+
 		tower.transform.position = waypoint.transform.position;
 		tower.waypoint = waypoint;
+
 		towers.Enqueue ( tower );
 	}
 }

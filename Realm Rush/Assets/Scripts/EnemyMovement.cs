@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
 	[SerializeField] float moveSpeed = 10f;
+	[SerializeField] ParticleSystem goalParticlePrefab;
 
 	void Start ()
 	{
@@ -25,10 +26,19 @@ public class EnemyMovement : MonoBehaviour
 				transform.position = Vector3.MoveTowards(transform.position, waypoint.transform.position, moveSpeed * Time.deltaTime);
 				yield return null;
 			}
-
 			// Hop to point
 			//transform.position = waypoint.transform.position;
 			//yield return new WaitForSecondsRealtime ( 1f );
 		}
+		DestroyEnemy ();
+	}
+
+	private void DestroyEnemy ()
+	{
+		ParticleSystem deathFx = Instantiate ( goalParticlePrefab, transform.position, Quaternion.identity );
+		Destroy ( deathFx.gameObject, deathFx.main.duration );
+
+		Destroy ( gameObject );
+
 	}
 }

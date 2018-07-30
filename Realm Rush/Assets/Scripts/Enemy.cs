@@ -8,24 +8,6 @@ public class Enemy : MonoBehaviour
 	[SerializeField] Collider collisionMesh;
 	[SerializeField] ParticleSystem deathParticlePrefab,hitParticlePrefab;
 
-	void Start ()
-	{
-		AddBoxCollider ();
-	}
-	
-	void Update ()
-	{
-		
-	}
-
-	private void AddBoxCollider ()
-	{
-		/*Transform child = gameObject.GetComponentInChildren<Transform> ().GetChild(0);
-		BoxCollider boxCollider = child.gameObject.AddComponent<BoxCollider> ();
-		BoxCollider boxCollider = gameObject.AddComponent<BoxCollider> ();
-		boxCollider.isTrigger = false;*/
-	}
-
 	private void OnParticleCollision ( GameObject other )
 	{
 		ProcessHit ( other );
@@ -44,6 +26,8 @@ public class Enemy : MonoBehaviour
 		if ( health <= 0 )
 		{
 			ParticleSystem deathFx = Instantiate ( deathParticlePrefab, transform.position, Quaternion.identity );
+			Destroy ( deathFx.gameObject, deathFx.main.duration );
+
 			Destroy ( gameObject );
 		}
 	}
