@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
 	[SerializeField] int health = 100;
 	[SerializeField] Collider collisionMesh;
-	[SerializeField] GameObject enemyDeathFx;
+	[SerializeField] ParticleSystem deathParticlePrefab,hitParticlePrefab;
 
 	void Start ()
 	{
@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
 
 	private void ProcessHit ( GameObject other )
 	{
+		hitParticlePrefab.Play ();
 		Tower tower = other.GetComponentInParent<Tower> ();
 		health -= tower.GetDamagePerShot ();
 	}
@@ -42,7 +43,7 @@ public class Enemy : MonoBehaviour
 	{
 		if ( health <= 0 )
 		{
-			GameObject deathFx = Instantiate ( enemyDeathFx, transform.position, Quaternion.identity );
+			ParticleSystem deathFx = Instantiate ( deathParticlePrefab, transform.position, Quaternion.identity );
 			Destroy ( gameObject );
 		}
 	}
